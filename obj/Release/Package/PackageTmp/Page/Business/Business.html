@@ -1,0 +1,82 @@
+﻿<!--********************************************************************
+//	创建时间:	2016/07/13
+//	作者:		sh
+//********************************************************************
+//	文件: 	Business.html
+//	功能：  业务查询主页面
+//  说明：
+*********************************************************************-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta name="viewport" content="width=640" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="format-detection" content="telephone=no">
+    <title>业务查询</title>
+    <link href="../../Jquery/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <script src="../../Jquery/jquery-2.1.0.min.js"></script>
+    <script src="../../Jquery/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "微软雅黑";
+            background-color: #ffffff;
+        }
+
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .text {
+            font-size: 24px;
+            text-align: left;
+        }
+
+        .text li {
+            background: url(../../Images/weight.png) left 15px no-repeat;
+            line-height: 50px;
+        }
+    </style>
+    <script>
+        function DetailTableClick() {
+            //实现详细表格页面的跳转
+            window.location.href = 'http://218.92.115.55/M_Ddjg/Page/Business/WeightNote.html';
+        }
+
+    </script>
+</head>
+<body>
+    <ul data-role="listview" data-inset="true" class="text">
+        <li>
+            <span onclick="DetailTableClick()">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;磅单查询
+                <!-- <span style="font-size:30px; font-weight:bold; margin-bottom:30px;  padding-left:20px; ">磅单查询</span>-->
+            </span>
+        </li>
+        <!--<li>
+            <a href="#">
+                <img src="../_assets/img/album-hc.jpg">
+                <h2>Warning</h2>
+                <p>Hot Chip</p>
+            </a>
+        </li>-->
+    </ul>
+</body>
+</html>

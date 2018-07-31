@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery手机端上拉刷新下拉加载更多页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link href="../../Css/reset.css" rel="stylesheet" />
+    <link href="../../Css/pullToRefresh.css" rel="stylesheet" />
+    <script src="../../Jquery/iscroll.js"></script>
+    <script src="../../Jquery/pullToRefresh.js"></script>
+    <script src="../../Jquery/colorful.js"></script>
+    <script src="../../Jquery/jquery-2.1.0.min.js"></script>
+
+    <style type="text/css" media="all">
+        *{ margin: 0; padding: 0;}
+        body{ font-family:"微软雅黑"; background-color:#ffffff; }
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+        .box { clear:both; margin-top:10px; width:100%; max-width: 640px;}
+        .box span{ box-sizing: border-box; float:left;}
+        .box li { float:left; font-size:14px; line-height:40px; list-style:none; width:100%; border-bottom: 2px dashed #808080;}
+        /*.box li span { }*/
+        .pl { padding-left:10px;}
+        .pr { padding-left:10px;}
+        .pn { padding-left:30%;}
+        .pc { text-align: center; }
+
+        .w1x{
+	        width: 15%;
+	        text-align:center;
+            font-weight:bold;
+            color: #ff0000;
+        }
+        .w2x{
+	        width: 35%;
+        }
+        .w1 { width:15%; font-weight:bold; color: #ff0000;}
+        .w2 { width:35%}
+
+        
+        input::-webkit-input-placeholder { 
+        color: #999; 
+        -webkit-transition: color.5s; 
+        } 
+        input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder { 
+        color: #c2c2c2; 
+        -webkit-transition: color.5s; 
+        } 
+    </style>
+    <!--<script>
+
+    </script>-->
+</head>
+<body>
+    <div style="text-align:center; width:100%;  margin-top:10px; max-width: 640px;">
+        <form>
+            <select name="" style="width:16%; height:30px; margin-left:10%;" id="selectprovince">
+                <option value="京" selected="selected">-京-</option>
+                <option value="津">-津-</option>
+                <option value="冀">-冀-</option>
+                <option value="晋">-晋-</option>
+                <option value="蒙">-蒙-</option>
+                <option value="辽">-辽-</option>
+                <option value="吉">-吉-</option>
+                <option value="黑">-黑-</option>
+                <option value="沪">-沪-</option>
+                <option value="苏">-苏-</option>
+                <option value="浙">-浙-</option>
+                <option value="浣">-浣-</option>
+                <option value="闽">-闽-</option>
+                <option value="赣">-赣-</option>
+                <option value="鲁">-鲁-</option>
+                <option value="豫">-豫-</option>
+                <option value="鄂">-鄂-</option>
+                <option value="湘">-湘-</option>
+                <option value="粤">-粤-</option>
+                <option value="桂">-桂-</option>
+                <option value="琼">-琼-</option>
+                <option value="渝">-渝-</option>
+                <option value="川">-川-</option>
+                <option value="黔">-黔-</option>
+                <option value="滇">-滇-</option>
+                <option value="藏">-藏-</option>
+                <option value="陕">-陕-</option>
+                <option value="甘">-甘-</option>
+                <option value="青">-青-</option>
+                <option value="宁">-宁-</option>
+                <option value="新">-新-</option>
+                <option value="台">-台-</option>
+                <option value="港">-港-</option>
+                <option value="澳">-澳-</option>
+            </select>
+            <select name="" style="width:16%; height:30px; margin-left:2%; " id="selectcode">
+                <option value="A" selected="selected">-A-</option>
+                <option value="B">-B-</option>
+                <option value="C">-C-</option>
+                <option value="D">-D-</option>
+                <option value="E">-E-</option>
+                <option value="F">-F-</option>
+                <option value="G">-G-</option>
+                <option value="H">-H-</option>
+                <option value="I">-I-</option>
+                <option value="J">-J-</option>
+                <option value="K">-K-</option>
+                <option value="L">-L-</option>
+                <option value="M">-M-</option>
+                <option value="N">-N-</option>
+                <option value="O">-O-</option>
+                <option value="P">-P-</option>
+                <option value="Q">-Q-</option>
+                <option value="R">-R-</option>
+                <option value="S">-S-</option>
+                <option value="T">-T-</option>
+                <option value="U">-U-</option>
+                <option value="V">-V-</option>
+                <option value="W">-W-</option>
+                <option value="X">-X-</option>
+                <option value="Y">-Y-</option>
+                <option value="Z">-Z-</option>
+            </select>
+            <input type="text" name="search-input1" id="search-input1" placeholder="请输入车牌号..." style="width:20%; height:30px; margin-left:2%;">
+            <button type="button" , onclick="Search()" id="search" style="width:20%; height:34px; margin-left:4%;">搜索</button>
+        </form>
+    </div>
+
+    <div id="wrapper" class="box">
+        <ul id="table1">
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var searchVehicleNum = '';
+
+        $(function () {
+            $("#wrapper ul").empty();
+            $('#wrapper ul').append("<li><span  class='pn'>请输入车牌号查询！</span><br /><span class='pn'>只限一周之内磅单数据查询！</span></li>")
+            wrapper.refresh();
+        })
+
+        function Search() {
+            var province = encodeURIComponent($("#selectprovince").val());
+            var code = $("#selectcode").val();
+            var vehicleNum = encodeURIComponent($("#search-input1").val());
+            if (vehicleNum == "")
+            {
+                alert("车牌号不能为空！");
+                return;
+            }
+            searchVehicleNum = province + code + vehicleNum;
+            num = 1;
+            minRow = (num - 1) * 10 + 1;
+            maxRow = num * 10;
+            strmess = searchVehicleNum + "+" + minRow + "+" + maxRow;
+            $.getJSON("WeightNote.aspx?message=" + strmess, null, function (ret) {
+                $("#wrapper ul").empty();
+                if (ret == 0) {
+                    $('#wrapper ul').append("<li class='pc'>暂无数据！</li>")
+                }
+                else
+                {
+                    for (i = 0; i < ret.length; ++i)
+                    {
+                        $('#wrapper ul').append("<li><span class='pl w1x'>票号</span><span class='pl w2x'>" + ret[i][2] + "</span><span class='pr w1'>毛重</span><span class='pl w2'>" + ret[i][5] + "</span><br /><span class='pl w1x'>车号</span><span class='pl w2x'>" + ret[i][3] + "</span><span class='pr w1'>净重</span><span class='pl w2'>" + ret[i][7] + "</span><br /><span class='pl w1x'>时间</span><span class='pl w2x'>" + ret[i][1] + "</span><span class='pr w1'>皮重</span><span class='pl w2'>" + ret[i][6] + "</span><br /><span class='pr w1'>地点</span><span class='pl w2'>" + ret[i][9] + "</span></li>")
+                    }
+                }
+
+                wrapper.refresh();
+            })
+        }
+
+        refresher.init({
+	        id: "wrapper",//<------------------------------------------------------------------------------------┐
+	        pullDownAction: Refresh,
+	        pullUpAction: Load
+        });
+        var generatedCount = 0;
+
+        //刷新
+        function Refresh() {
+	        setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+	            num = 1;
+	            minRow = (num - 1) * 10 + 1;
+	            maxRow = num * 10;
+	            strmess = searchVehicleNum + "+" + minRow + "+" + maxRow;
+
+	            $.getJSON("WeightNote.aspx?message=" + strmess, null, function (ret) {
+	                $("#wrapper ul").empty();
+	                if (ret == 0)
+	                {
+	                    $('#wrapper ul').append("<li class='pc'>暂无数据！</li>")
+	                }
+	                else
+	                {
+	                    for (i = 0; i < ret.length; ++i)
+	                    {
+	                        $('#wrapper ul').append("<li><span class='pl w1x'>票号</span><span class='pl w2x'>" + ret[i][2] + "</span><span class='pr w1'>毛重</span><span class='pl w2'>" + ret[i][5] + "</span><br /><span class='pl w1x'>车号</span><span class='pl w2x'>" + ret[i][3] + "</span><span class='pr w1'>净重</span><span class='pl w2'>" + ret[i][7] + "</span><br /><span class='pl w1x'>时间</span><span class='pl w2x'>" + ret[i][1] + "</span><span class='pr w1'>皮重</span><span class='pl w2'>" + ret[i][6] + "</span><br /><span class='pr w1'>地点</span><span class='pl w2'>" + ret[i][9] + "</span></li>")
+	                    }
+	                }
+	                wrapper.refresh();
+		        })
+	        }, 1000);
+
+        }
+
+        //加载
+        function Load() {
+	        setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
+
+		        num++;
+		        minRow = (num - 1) * 10 + 1;
+		        maxRow = num * 10;
+		        strmess = searchVehicleNum + "+" + minRow + "+" + maxRow;
+
+		        $.getJSON("WeightNote.aspx?message=" + strmess, null, function (ret) {
+		            if (ret == 0)
+		            {
+		                $('#wrapper ul').append("<li class='pc'>暂无更多数据！</li>")
+		            }
+		            else
+		            {
+		                for (i = 0; i < ret.length; ++i)
+		                {
+		                    $('#wrapper ul').append("<li><span class='pl w1x'>票号</span><span class='pl w2x'>" + ret[i][2] + "</span><span class='pr w1'>毛重</span><span class='pl w2'>" + ret[i][5] + "</span><br /><span class='pl w1x'>车号</span><span class='pl w2x'>" + ret[i][3] + "</span><span class='pr w1'>净重</span><span class='pl w2'>" + ret[i][7] + "</span><br /><span class='pl w1x'>时间</span><span class='pl w2x'>" + ret[i][1] + "</span><span class='pr w1'>皮重</span><span class='pl w2'>" + ret[i][6] + "</span><br /><span class='pr w1'>地点</span><span class='pl w2'>" + ret[i][9] + "</span></li>")
+		                }
+		            }
+		            wrapper.refresh();
+		        })
+	        }, 1000);
+        }
+    </script>
+
+</body>
+</html>

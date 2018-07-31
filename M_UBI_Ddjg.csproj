@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25456318-80F0-46E7-9B50-017DCE27A24A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>M_UBI_Ddjg</RootNamespace>
+    <AssemblyName>M_UBI_Ddjg</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IPortData, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d68b0a7daaf47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IPortData.dll</HintPath>
+    </Reference>
+    <Reference Include="leo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\leo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bill\GetBillDetail.aspx" />
+    <Content Include="bin\IPortData.dll" />
+    <Content Include="bin\leo.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="Css\css.css" />
+    <Content Include="Css\pullToRefresh.css" />
+    <Content Include="Css\reset.css" />
+    <Content Include="Evaluate\DeleteEvaluation.aspx" />
+    <Content Include="Evaluate\GetEvaluation.aspx" />
+    <Content Include="Evaluate\ReleaseEvaluation.aspx" />
+    <Content Include="Goods\GetGoods.aspx" />
+    <Content Include="Images\weight.png" />
+    <Content Include="Jquery\colorful.js" />
+    <Content Include="Jquery\iscroll.js" />
+    <Content Include="Jquery\jquery-2.1.0.min.js" />
+    <Content Include="Jquery\jquery.mobile-1.4.5.min.css" />
+    <Content Include="Jquery\jquery.mobile-1.4.5.min.js" />
+    <Content Include="Jquery\pullToRefresh.js" />
+    <Content Include="Page\Business\Business.html" />
+    <Content Include="Page\Business\WeightNote.aspx" />
+    <Content Include="Page\Business\WeightNote.html" />
+    <Content Include="Page\Contact.html" />
+    <Content Include="Page\Help.html" />
+    <Content Include="Page\RetrievePassword.html" />
+    <Content Include="Page\WorkPaper.html" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="User\GetAllUserInfo.aspx" />
+    <Content Include="WorkOrder\GetWorkOrder.aspx" />
+    <None Include="Service References\ServiceXLQ\service1.disco" />
+    <None Include="Service References\ServiceXLQ\configuration91.svcinfo" />
+    <None Include="Service References\ServiceXLQ\configuration.svcinfo" />
+    <None Include="Service References\ServiceXLQ\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Storage\GetAllInAndOutCoord.aspx" />
+    <Content Include="Storage\GetInAndOutCoord.aspx" />
+    <Content Include="Storage\GetStorageCoord.aspx" />
+    <Content Include="Vehicle\BindingVehilceNum.aspx" />
+    <Content Include="Vehicle\GetBindingVehicleNum.aspx" />
+    <Content Include="Voice\GetCoordVoice.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bill\BillDetailE.cs" />
+    <Compile Include="Bill\GetBillDetail.aspx.cs">
+      <DependentUpon>GetBillDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bill\GetBillDetail.aspx.designer.cs">
+      <DependentUpon>GetBillDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\IBillDetail.cs" />
+    <Compile Include="Common\DicPackage.cs" />
+    <Compile Include="Common\EncryptionTool.cs" />
+    <Compile Include="Common\InterfaceTool.cs" />
+    <Compile Include="Evaluate\DeleteEvaluation.aspx.cs">
+      <DependentUpon>DeleteEvaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluate\DeleteEvaluation.aspx.designer.cs">
+      <DependentUpon>DeleteEvaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluate\GetEvaluation.aspx.cs">
+      <DependentUpon>GetEvaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluate\GetEvaluation.aspx.designer.cs">
+      <DependentUpon>GetEvaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluate\ReleaseEvaluation.aspx.cs">
+      <DependentUpon>ReleaseEvaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluate\ReleaseEvaluation.aspx.designer.cs">
+      <DependentUpon>ReleaseEvaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Goods\GetGoods.aspx.cs">
+      <DependentUpon>GetGoods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Goods\GetGoods.aspx.designer.cs">
+      <DependentUpon>GetGoods.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Business\WeightNote.aspx.cs">
+      <DependentUpon>WeightNote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Business\WeightNote.aspx.designer.cs">
+      <DependentUpon>WeightNote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceXLQ\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\GetAllInAndOutCoord.aspx.cs">
+      <DependentUpon>GetAllInAndOutCoord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storage\GetAllInAndOutCoord.aspx.designer.cs">
+      <DependentUpon>GetAllInAndOutCoord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\GetInAndOutCoord.aspx.cs">
+      <DependentUpon>GetInAndOutCoord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storage\GetInAndOutCoord.aspx.designer.cs">
+      <DependentUpon>GetInAndOutCoord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\GetStorageCoord.aspx.cs">
+      <DependentUpon>GetStorageCoord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storage\GetStorageCoord.aspx.designer.cs">
+      <DependentUpon>GetStorageCoord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\IInAndOutCoord.cs" />
+    <Compile Include="Storage\IStorageCoord.cs" />
+    <Compile Include="User\GetAllUserInfo.aspx.cs">
+      <DependentUpon>GetAllUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\GetAllUserInfo.aspx.designer.cs">
+      <DependentUpon>GetAllUserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicle\BindingVehilceNum.aspx.cs">
+      <DependentUpon>BindingVehilceNum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vehicle\BindingVehilceNum.aspx.designer.cs">
+      <DependentUpon>BindingVehilceNum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicle\GetBindingVehicleNum.aspx.cs">
+      <DependentUpon>GetBindingVehicleNum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vehicle\GetBindingVehicleNum.aspx.designer.cs">
+      <DependentUpon>GetBindingVehicleNum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voice\GetCoordVoice.aspx.cs">
+      <DependentUpon>GetCoordVoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Voice\GetCoordVoice.aspx.designer.cs">
+      <DependentUpon>GetCoordVoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrder\GetWorkOrder.aspx.cs">
+      <DependentUpon>GetWorkOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkOrder\GetWorkOrder.aspx.designer.cs">
+      <DependentUpon>GetWorkOrder.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\fabu.pubxml" />
+    <None Include="Service References\ServiceXLQ\service1.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceXLQ\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>40450</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:40450/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

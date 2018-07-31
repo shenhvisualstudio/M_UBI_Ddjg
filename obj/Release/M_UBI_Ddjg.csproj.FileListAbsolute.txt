@@ -1,0 +1,6 @@
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\bin\M_UBI_Ddjg.dll.config
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\bin\M_UBI_Ddjg.dll
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\bin\M_UBI_Ddjg.pdb
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\obj\Release\M_UBI_Ddjg.dll
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\obj\Release\M_UBI_Ddjg.pdb
+F:\Visual Studio2015\shenh.visualstudio.com\M_UBI_Ddjg\M_UBI_Ddjg\obj\Release\M_UBI_Ddjg.csprojResolveAssemblyReference.cache

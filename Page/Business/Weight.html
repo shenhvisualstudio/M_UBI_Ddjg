@@ -1,0 +1,150 @@
+﻿<!--********************************************************************
+//	创建时间:	2015/02/26
+//	作者:		sh
+//********************************************************************
+//	文件: 	WeightNote.html
+//	功能：  磅单查询
+//  说明：
+*********************************************************************-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=640" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>磅单查询</title>
+    <link href="../../Css/css.css" rel="stylesheet" />
+    <script src="../../Jquery/jquery-2.1.0.min.js"></script>
+    <script>
+
+        function DetailTableClick(info) {
+            //实现详细表格页面的跳转
+            window.location.href = '../../Detail/Detail_Table_forBusiness.html?info=' + info;
+        }
+
+        var str = document.location.search;
+        if (str == "") {
+            var str = "info=1+20160621508683";
+        }
+        var str1 = str.split("=", 2);
+        var str2 = str1[1].split("+", 3);
+        var strmess = str2[0] + "+" + str2[1];
+        var num;
+        if (str2[2] == null) {
+            num = 1;
+        }
+        else {
+            num = str2[2];
+        }
+
+        $(function () {
+
+            if (str2[1] == "") {
+                $('#table').append("<tr><th>票号</th><th>车号</th><th>毛重</th><th>净重</th><th>时间</th></tr>");
+                $('#table').append("<tr><td colspan=\"5\"><img src=\"..\/..\/Images\/Channel/delegation.png\" width=\"640\" height=\"220\"/></td></tr>");
+                return;
+            }
+            var minRow = (num - 1) * 15 + 1;
+            var maxRow = num * 15;
+            str = strmess + '+' + minRow + '+' + maxRow;
+
+            $.getJSON("Weight.aspx?message=" + str, null, function (ret) {
+
+                if (ret == 0 && num != 1) {
+                    num--;
+                    alert("当前页无数据，请返回！");
+                    window.location.href = 'VehicleBalance.html?info=' + strmess + "+" + num;
+                    return;
+                }
+                else if (ret == 0) {
+                    $('#table').append("<tr><th>票号</th><th>车号</th><th>毛重</th><th>净重</th><th>时间</th></tr>");
+                    $('#table').append("<tr><td colspan=\"5\"><img src=\"..\/..\/Images\/Channel/none.png\" width=\"640\" height=\"220\"/></td></tr>");
+                    return;
+                }
+
+                $('#table').empty();
+                var page = '第' + num + '页';
+                $('#pagenum').text(page);
+                //$('#table').append("<tr><th class='th1'>总车数</th><th class='th1'>总皮重</th><th class='th1'>总毛重</th><th class='th1'>总净重</th><th class='th1'>进度</th></tr>");
+                //if (ret.length == 4) {
+                //    var schedule = "0%";
+                //    if (ret[1][0] / ret[2][0] * 100.0 > 100.0) {
+                //        schedule = "100%";
+                //    }
+                //    else {
+                //        schedule = ret[1][0] / ret[2][0] * 100.0;
+                //    }
+
+                //    $('#table').append("<tr class='tr1'><td class='td1'>" + ret[0][0][0] + "</td><td class='td1'>" + ret[0][0][2] + "</td><td class='td1'>" + ret[0][0][1] + "</td><td class='td1'>" + ret[0][0][3] + "</td><td class='td1'>" + schedule.toFixed(2) + "</td></tr>")
+                //}
+
+                $('#table').append("<tr><th>票号</th><th>车号</th><th>毛重</th><th>净重</th><th>时间</th></tr>");
+                for (var i = 0; i < ret[0].length; ++i) {
+                    if (i % 2 == 0) {
+                        $('#table').append("<tr class='tr1' onclick=\"DetailTableClick('" + 'WeightNote' + '+' + 32 + '+' + ret[0][i][2] + "')\"><td>"
+                            + ret[0][i][2] + "</td><td>"
+                            + ret[0][i][3] + "</td><td>"
+                            + ret[0][i][5] + "</td><td>"
+                            + ret[0][i][7] + "</td><td>"
+                            + ret[0][i][1] + "</td></tr>")
+                        continue;
+                    }
+                    $('#table').append("<tr class='tr2' onclick=\"DetailTableClick('" + 'WeightNote' + '+' + 32 + '+' + ret[0][i][2] + "')\"><td>"
+                            + ret[0][i][2] + "</td><td>"
+                            + ret[0][i][3] + "</td><td>"
+                            + ret[0][i][5] + "</td><td>"
+                            + ret[0][i][7] + "</td><td>"
+                            + ret[0][i][1] + "</td></tr>")
+                }
+                if (ret[0].length == 0) {
+                    $('#table').append("<tr><td colspan=\"5\"><img src=\"..\/..\/Images\/Channel/none.png\" width=\"640\" height=\"220\"/></td></tr>");
+                }
+                $(".turepage").css("display", "block");
+            })
+
+
+            $("#prev").click(function () {
+                if (1 == num) {
+                    return;
+                }
+                else {
+                    num--;
+                }
+
+                window.location.href = 'Weight.html?info=' + strmess + "+" + num;
+            });
+
+
+            $("#next").click(function () {
+                num++;
+                window.location.href = 'Weight.html?info=' + strmess + "+" + num;
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="stylebox">
+            <table id="table" class="table" style="width:100%"></table>
+        </div>
+
+        <div class="turepage">
+            <button type="button" id="prev">上一页</button>
+            <p id="pagenum"></p>
+            <button type="button" id="next">下一页</button>
+        </div>
+        <div class="bk20"></div>
+
+        <!--<div class="stylebox">
+            <h6 style="text-align:center; font-size:18px; padding-top:10px;">此服务暂停使用！</h6>
+        </div>-->
+
+
+    </div>
+
+</body>
+</html>
